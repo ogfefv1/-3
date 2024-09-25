@@ -35,7 +35,15 @@ MyString::MyString(const char* inputStr)
     ++objectCount;
 }
 
-MyString::~MyString() 
+MyString::MyString(const MyString& obj)
+{
+    length = obj.length;
+    str = new char[length];
+    strcpy(str, obj.str);
+    ++objectCount;
+}
+
+MyString::~MyString()
 {
     delete[] str;
     --objectCount;

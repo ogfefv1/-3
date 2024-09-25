@@ -9,7 +9,7 @@
 #pragma once
 #include <iostream>
 
-class MyString 
+class MyString
 {
     char* str;
     int length;
@@ -18,6 +18,7 @@ public:
     MyString();
     MyString(int size);
     MyString(const char* inputStr);
+    MyString(const MyString& obj); 
     ~MyString();
     void Vhod();
     void Vihod() const;
@@ -30,5 +31,6 @@ public:
     int MyStrCmp(const MyString& b) const;
     static int PoluchitKolichestvoObektov();
 };
+
 
 
