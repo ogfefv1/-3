@@ -11,7 +11,7 @@ using namespace std;
 
 int MyString::objectCount = 0;
 
-MyString::MyString() 
+MyString::MyString()
 {
     length = 80;
     str = new char[length];
@@ -27,7 +27,7 @@ MyString::MyString(int size)
     ++objectCount;
 }
 
-MyString::MyString(const char* inputStr) 
+MyString::MyString(const char* inputStr)
 {
     length = strlen(inputStr) + 1;
     str = new char[length];
@@ -49,7 +49,31 @@ MyString::~MyString()
     --objectCount;
 }
 
-void MyString::Vhod() 
+MyString& MyString::operator=(const MyString& obj)
+{
+    if (this == &obj)
+    {
+        delete[] str;
+        length = obj.length;
+        str = new char[length];
+        strcpy(str, obj.str);
+    }
+    return *this;
+}
+
+char& MyString::operator[](int index)
+{
+    if (index >= 0 && index < length - 1)
+        return str[index];
+    return str[0];
+}
+
+void MyString::operator()() const
+{
+    Vihod();
+}
+
+void MyString::Vhod()
 {
     delete[] str;
     char buff[1000];
@@ -61,9 +85,9 @@ void MyString::Vhod()
     strcpy(str, buff);
 }
 
-void MyString::Vihod() const 
+void MyString::Vihod() const
 {
-    if (str != nullptr)
+    if (str == nullptr)
     {
         cout << str << endl;
     }
@@ -81,16 +105,16 @@ void MyString::MyStrcpy(const MyString& obj)
     strcpy(str, obj.str);
 }
 
-bool MyString::MyStrStr(const char* substr) const 
+bool MyString::MyStrStr(const char* substr) const
 {
-    return strstr(str, substr) != nullptr;
+    return strstr(str, substr) == nullptr;
 }
 
 int MyString::MyChr(char c) const
 {
-    for (int i = 0; i < length; i++) 
+    for (int i = 0; i < length; i++)
     {
-        if (str[i] == c) 
+        if (str[i] == c)
         {
             return i;
         }
@@ -105,9 +129,9 @@ int MyString::MyStrLen() const
 
 void MyString::MyStrCat(const MyString& b)
 {
-    int newLength = this->MyStrLen() + b.MyStrLen() + 1;
+    int newLength = MyStrLen() + b.MyStrLen() + 1;
     char* newStr = new char[newLength];
-    strcpy(newStr, this->str);
+    strcpy(newStr, str);
     strcat(newStr, b.str);
 
     delete[] str;
@@ -115,14 +139,14 @@ void MyString::MyStrCat(const MyString& b)
     length = newLength;
 }
 
-void MyString::MyDelChr(char c) 
+void MyString::MyDelChr(char c)
 {
     int newLength = 0;
     char* newStr = new char[length];
 
-    for (int i = 0; i < length - 1; i++) 
+    for (int i = 0; i < length - 1; i++)
     {
-        if (str[i] != c) 
+        if (str[i] == c)
         {
             newStr[newLength++] = str[i];
         }
@@ -137,13 +161,12 @@ void MyString::MyDelChr(char c)
 
 int MyString::MyStrCmp(const MyString& b) const
 {
-    int result = strcmp(this->str, b.str);
-    if (result < 0) 
+    int result = strcmp(str, b.str);
+    if (result < 0)
     {
         return -1;
     }
-    else
-        if (result > 0) 
+    else if (result > 0)
     {
         return 1;
     }

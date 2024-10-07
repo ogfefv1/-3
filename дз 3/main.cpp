@@ -34,8 +34,8 @@ int main()
     str2.Vihod();
 
     MyString str4;
-    str4.MyStrcpy(str1);
-    cout << "скопирована строка str4 из str1: ";
+    str4 = str1;
+    cout << "строка str4 скопирована из str1: ";
     str4.Vihod();
 
     MyString result = str3;
@@ -44,10 +44,12 @@ int main()
     cout << "результат конкатенации строк: ";
     result.Vihod();
 
-    cout << "количество объектов MyString: " << MyString::PoluchitKolichestvoObektov() << endl;
+    cout << "символ в str1[0]: " << str1[0] << endl;
 
+    cout << "Вывод str1 через оператор (): ";
+    str1();
+
+    cout << "количество объектов MyString: " << MyString::PoluchitKolichestvoObektov() << endl;
 
     return 0;
 }
-
-

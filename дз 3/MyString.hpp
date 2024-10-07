@@ -5,7 +5,6 @@
 //  Created by Егор Джемлиханов on 16.09.2024.
 //
 
-
 #pragma once
 #include <iostream>
 
@@ -18,8 +17,13 @@ public:
     MyString();
     MyString(int size);
     MyString(const char* inputStr);
-    MyString(const MyString& obj); 
+    MyString(const MyString& obj);
     ~MyString();
+
+    MyString& operator=(const MyString& obj);
+    char& operator[](int index);
+    void operator()() const;                  
+
     void Vhod();
     void Vihod() const;
     void MyStrcpy(const MyString& obj);
@@ -31,6 +35,3 @@ public:
     int MyStrCmp(const MyString& b) const;
     static int PoluchitKolichestvoObektov();
 };
-
-
-
