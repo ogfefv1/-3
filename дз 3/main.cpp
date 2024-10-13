@@ -11,45 +11,16 @@ using namespace std;
 
 int main()
 {
-    MyString str1;
-    MyString str2;
-    MyString str3;
+    MyString a;
+    cout << "напишите строку для a: ";
+    cin >> a;
 
-    cout << "напишите строку для str3 (стартовая строка): ";
-    str3.Vhod();
+    MyString b;
+    b = "Hello " + a;
+    cout << "b после конкатенации: " << b << endl;
 
-    cout << "напишите строку для str1: ";
-    str1.Vhod();
-
-    cout << "напишите строку для str2: ";
-    str2.Vhod();
-
-    cout << "начальная строка str3: ";
-    str3.Vihod();
-
-    cout << "обновлена ​​строка str1: ";
-    str1.Vihod();
-
-    cout << "обновлена ​​строка str2: ";
-    str2.Vihod();
-
-    MyString str4;
-    str4 = str1;
-    cout << "строка str4 скопирована из str1: ";
-    str4.Vihod();
-
-    MyString result = str3;
-    result.MyStrCat(str1);
-    result.MyStrCat(str2);
-    cout << "результат конкатенации строк: ";
-    result.Vihod();
-
-    cout << "символ в str1[0]: " << str1[0] << endl;
-
-    cout << "Вывод str1 через оператор (): ";
-    str1();
-
-    cout << "количество объектов MyString: " << MyString::PoluchitKolichestvoObektov() << endl;
+    a += " world";
+    cout << "a после +=: " << a << endl;
 
     return 0;
 }
