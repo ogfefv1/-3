@@ -7,7 +7,9 @@
 
 #pragma once
 #include <iostream>
+
 using namespace std;
+
 
 class MyString
 {
@@ -21,25 +23,19 @@ public:
     MyString(const char* inputStr);
     MyString(const MyString& obj);
     MyString(MyString& obj);
+    MyString(initializer_list<char> list);
     ~MyString();
 
     MyString& operator=(const MyString& obj);
     MyString& operator=(MyString& obj);
-    MyString& operator+=(const char* rhs);           
+    MyString& operator+=(const char* rhs);
 
     char& operator[](int index);
     void operator()() const;
 
     void Vhod();
     void Vihod() const;
-    void MyStrcpy(const MyString& obj);
-    bool MyStrStr(const char* substr) const;
-    int MyChr(char c) const;
     int MyStrLen() const;
-    void MyStrCat(const MyString& b);
-    void MyDelChr(char c);
-    int MyStrCmp(const MyString& b) const;
-    static int PoluchitKolichestvoObektov();
 
     friend ostream& operator<<(ostream& out, const MyString& obj);
     friend istream& operator>>(istream& in, MyString& obj);

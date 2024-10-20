@@ -11,9 +11,9 @@ using namespace std;
 
 int main()
 {
-    MyString a;
-    cout << "напишите строку для a: ";
-    cin >> a;
+
+    MyString a({'H', 'e', 'l', 'l', 'o'});
+    cout << "Строка a: " << a << endl;
 
     MyString b;
     b = "Hello " + a;
